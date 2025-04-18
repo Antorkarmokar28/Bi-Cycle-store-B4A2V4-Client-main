@@ -1,10 +1,40 @@
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react"; // optional icons
+import { Menu, X } from "lucide-react";
 import { FaBicycle } from "react-icons/fa6";
-import { AdminSidebarItems } from "./AdminSidebarItems";
 import { NavLink } from "react-router";
+import { useAppSelector } from "@/redux/hooks";
+import { useCurrentUser } from "@/redux/features/auth/authSlice";
+import { CustomerSidebarItems } from "./CustomerSidebarItems";
+import { AdminSidebarItems } from "./AdminSidebarItems";
+import { TAdminSidebarItems } from "@/types/sidebar";
+
+// user role
+const userRole = {
+  ADMIN: "admin",
+  CUSTOMER: "customer",
+};
+
 const AdminSidebar = () => {
+  const user = useAppSelector(useCurrentUser);
+
+  const [sidebarItems, setSidebarItems] = useState<TAdminSidebarItems>([]);
+
+  useEffect(() => {
+    // Check user role and set sidebar items accordingly
+    switch (user?.role) {
+      case userRole.ADMIN:
+        setSidebarItems(AdminSidebarItems);
+        break;
+      case userRole.CUSTOMER:
+        setSidebarItems(CustomerSidebarItems);
+        break;
+      default:
+        setSidebarItems([]);
+    }
+  }, [user]);
+
   const [isOpen, setIsOpen] = useState(false);
+
   // Close menu when window is resized to desktop
   useEffect(() => {
     const handleResize = () => {
@@ -15,10 +45,11 @@ const AdminSidebar = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-  // Close menu when clicking a link
+
   const handleLinkClick = () => {
     setIsOpen(false);
   };
+
   return (
     <div className="flex">
       {/* Mobile menu button */}
@@ -29,6 +60,7 @@ const AdminSidebar = () => {
           <Menu />
         )}
       </button>
+
       {/* Sidebar */}
       <div
         className={`fixed top-0 left-0 h-screen w-64 bg-[#09192c] text-white p-5 transform ${
@@ -42,20 +74,25 @@ const AdminSidebar = () => {
           </p>
         </h2>
         <ul>
-          {AdminSidebarItems.map((item) => (
-            <li>
+          {sidebarItems.map((item) => (
+            <li key={item?.key} className="mb-4">
               <NavLink
                 onClick={handleLinkClick}
-                key={item?.key}
                 to={item?.link}
-                className = "block py-2 px-4 hove:bg-gray-700 rounded"
+                className={({ isActive }) =>
+                  `flex gap-4 py-2 px-4 rounded ${
+                    isActive ? "bg-gray-700" : "hover:bg-gray-700"
+                  }`
+                }
               >
+                {item?.icon}
                 {item?.title}
               </NavLink>
             </li>
           ))}
         </ul>
       </div>
+
       {/* Page Content */}
       <div className="flex-1 p-8">
         <h1 className="text-3xl font-bold">Welcome to Rideology!</h1>
@@ -66,6 +103,3 @@ const AdminSidebar = () => {
 };
 
 export default AdminSidebar;
-// href = "#";
-// onClick = { handleLinkClick };
-// className = "block py-2 px-4 bg-gray-700 rounded";

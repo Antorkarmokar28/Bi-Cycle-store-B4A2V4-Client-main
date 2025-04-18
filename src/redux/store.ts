@@ -1,35 +1,36 @@
-import { configureStore } from '@reduxjs/toolkit';
-import authReducer from './features/auth/authSlice';
-import { baseApi } from './api/baseApi';
-import { 
-  persistStore, 
-  persistReducer,  
+import { configureStore } from "@reduxjs/toolkit";
+import authReducer from "./features/auth/authSlice";
+import { baseApi } from "./api/baseApi";
+import {
+  persistStore,
+  persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
   PERSIST,
   PURGE,
   REGISTER,
-} from 'redux-persist';
-import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
+} from "redux-persist";
+import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
 
 const persistConfig = {
-  key: 'root',
+  key: "root",
   storage,
-}
+};
 
-const persistedReducer = persistReducer(persistConfig, authReducer)
+const persistedReducer = persistReducer(persistConfig, authReducer);
 
 export const store = configureStore({
-      reducer: {
-            [baseApi.reducerPath]: baseApi.reducer,
-            auth: persistedReducer,
+  reducer: {
+    [baseApi.reducerPath]: baseApi.reducer,
+    auth: persistedReducer,
+  },
+  middleware: (getDefaultMiddlewares) =>
+    getDefaultMiddlewares({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-      middleware: (getDefaultMiddlewares) => getDefaultMiddlewares({
-            serializableCheck: {
-                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-            },
-      }).concat(baseApi.middleware)
+    }).concat(baseApi.middleware),
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

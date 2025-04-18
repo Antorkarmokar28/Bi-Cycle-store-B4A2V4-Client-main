@@ -10,7 +10,10 @@ const productApi = baseApi.injectEndpoints({
                   })
             }),
             getProduct: builder.query({
-                  query: () => "/bicycles/products"
+                  query: () => ({
+                        url: "/bicycles/products",
+                        method: 'GET'
+                  })
             })
       })
 });

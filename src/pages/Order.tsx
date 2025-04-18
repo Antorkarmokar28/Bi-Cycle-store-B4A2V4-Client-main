@@ -1,7 +1,7 @@
 const Order = () => {
   return (
     <>
-      <h1>Order Page</h1>
+      <h1>This is a order component</h1>
     </>
   );
 };

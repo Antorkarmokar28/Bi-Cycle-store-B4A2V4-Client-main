@@ -31,7 +31,7 @@ const SignUp = () => {
         toast.success("User Sign up Successfully", {
           id: toastId,
         });
-        navigate('/');
+        navigate('/signin');
       }
     }catch(err){
       toast.error("Something went worng!", { id: toastId });
@@ -58,7 +58,7 @@ const SignUp = () => {
                 <div className='mb-6'>
                   <label htmlFor="password">Password:</label>
                   <br />
-                  <input className='p-2 rounded-md bg-[#e9e9e975] w-full block mt-4' id="password" type="Password" placeholder="Enter your password" {...register('password')} />
+                  <input className='p-2 rounded-md bg-[#e9e9e975] w-full block mt-4' id="password" type="text" placeholder="Enter your password" {...register('password')} />
                 </div>
                 <Button className='text-white'>Sign up</Button>
                 <p className='text-secondary mt-4'>Do have an Account! <Link className='text-primary font-bold' to="/signin">Sign in</Link></p>

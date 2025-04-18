@@ -6,7 +6,9 @@ import SignUp from "@/pages/SignUp";
 import Home from "@/pages/Home";
 import Order from "@/pages/Order";
 import ProtectedRoute from "@/components/layouts/ProtectedRoute";
-import AdminDashboard from "@/pages/AdminDashboard";
+import AdminDashboard from "@/pages/AdminDashboard/AdminDashboard";
+import CustomerDashboard from "@/pages/CustomerDashboard/CustomerDashboard";
+import CreateBicycle from "@/pages/AdminDashboard/ProductManagement/CreateBicycle";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -40,7 +42,29 @@ const router = createBrowserRouter([
   },
   {
     path: '/admin-dashboard',
-    element: <AdminDashboard />
+    element: (
+      <ProtectedRoute>
+        <AdminDashboard />
+      </ProtectedRoute>
+    ),
+    children: [
+      {
+        path: "create-bicycle",
+        element: (
+          <ProtectedRoute>
+            <CreateBicycle />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "order",
+        element: <Order />,
+      },
+    ],
+  },
+  {
+    path: '/customer-dashboard',
+    element: <CustomerDashboard />
   }
 ]);
 

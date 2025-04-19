@@ -1,15 +1,19 @@
 const AboutUs = () => {
   return (
-    <div className="w-full bg-white">
-      <div className="container mx-auto px-4 md:px-8">
-        <h1>About Us Pedaling Towards a Greener, Healthier Future </h1>
-        <p>
-          Welcome to Rideology, your one-stop destination for all things
-          cycling! Our journey began with a simple mission: to inspire people to
-          embrace the joy of cycling and make their rides smoother, safer, and
-          more enjoyable. Whether you’re a passionate cyclist, a weekend rider,
-          or someone looking for a reliable way to commute, we’re here to
-          provide you with the perfect bike and cycling gear.
+    <div
+      className="w-full h-[500px] bg-no-repeat bg-cover bg-center relative z-0 font-inter bg-[url('assets/images/Bicycle-Banner.png')]"
+    >
+      <div className="container mx-auto absolute top-40 left-40">
+        <h3 className="text-white text-3xl font-black text-center mb-6">
+          About Us | Rideology
+        </h3>
+        <p className="text-sm leading-6 text-white text-center">
+          Welcome to Rideology — where passion meets pedals! At Rideology, we
+          believe cycling is more than just a mode of transport — it’s a
+          lifestyle, a journey, and a statement of freedom. Whether you're a
+          seasoned cyclist, a weekend adventurer, or someone just discovering
+          the joy of riding, we’re here to fuel your journey with the best
+          bicycles, accessories, and riding essentials.
         </p>
       </div>
     </div>

@@ -78,16 +78,16 @@ const Footer = () => {
             <ul className="text-white leading-8">
               <li className="flex items-center gap-4 mb-4">
                 <Phone />
-                <span>+1 (415) 555-0198</span>
+                <span>+1 (415) 558-2194</span>
               </li>
               <li className="flex items-center gap-4 mb-4">
                 <Mail />
-                <span>support@medimart.com</span>
+                <span>support@Rideology.com</span>
               </li>
               <li className="flex items-center gap-4 mb-4">
                 <MapPinned />
                 <span>
-                  Medimart Support Center 742 Evergreen Terrace Springfield, IL
+                  Rideology Support Center 742 Evergreen Terrace Springfield, IL
                   62704 United States
                 </span>
               </li>
@@ -99,7 +99,7 @@ const Footer = () => {
       {/* All rights reserved */}
       <div className="mt-6">
         <p className="text-white text-center">
-          &copy; 2025 Medimart. All rights reserved.
+          &copy; 2025 Rideology. All rights reserved.
         </p>
       </div>
     </footer>

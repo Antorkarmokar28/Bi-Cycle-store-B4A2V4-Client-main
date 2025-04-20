@@ -1,4 +1,4 @@
-import { useGetProductQuery } from "@/redux/features/product/product";
+import { useGetProductQuery } from "@/redux/features/product/productsApi";
 
 const ProductCard = () => {
   const { data } = useGetProductQuery(undefined);

@@ -9,6 +9,11 @@ import ProtectedRoute from "@/components/layouts/ProtectedRoute";
 import AdminDashboard from "@/pages/AdminDashboard/AdminDashboard";
 import CustomerDashboard from "@/pages/CustomerDashboard/CustomerDashboard";
 import CreateBicycle from "@/pages/AdminDashboard/ProductManagement/CreateBicycle";
+import Checkout from "@/pages/Checkout/Checkout";
+import PaymentSuccess from "@/pages/Checkout/PaymentSuccess";
+import PaymentFailed from "@/pages/Checkout/PaymentFailed";
+import ProductDetails from "@/redux/features/product/ProductDetails";
+import AllProduct from "@/pages/AdminDashboard/Product/AllProduct";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -20,15 +25,43 @@ const router = createBrowserRouter([
       },
       {
         path: "about",
-        element: (
-          <ProtectedRoute>
-            <AboutUs/>
-          </ProtectedRoute>
-        ),
+        element: <AboutUs />,
       },
       {
         path: "order",
         element: <Order />,
+      },
+      {
+        path: "allProducts",
+        element: <AllProduct />,
+      },
+      {
+        path: "allProducts/productDetails/:productId", // Dynamic route with productId
+        element: <ProductDetails />,
+      },
+      {
+        path: "checkOut",
+        element: (
+          <ProtectedRoute>
+            <Checkout />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "payment-success/:trans_id",
+        element: (
+          <ProtectedRoute>
+            <PaymentSuccess />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "payment-fail/:trans_id",
+        element: (
+          <ProtectedRoute>
+            <PaymentFailed />
+          </ProtectedRoute>
+        ),
       },
     ],
   },
@@ -41,7 +74,7 @@ const router = createBrowserRouter([
     element: <SignUp />,
   },
   {
-    path: '/admin-dashboard',
+    path: "/admin-dashboard",
     element: (
       <ProtectedRoute>
         <AdminDashboard />
@@ -63,9 +96,9 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: '/customer-dashboard',
-    element: <CustomerDashboard />
-  }
+    path: "/customer-dashboard",
+    element: <CustomerDashboard />,
+  },
 ]);
 
 export default router;

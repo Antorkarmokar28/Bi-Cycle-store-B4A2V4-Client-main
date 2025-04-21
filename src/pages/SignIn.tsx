@@ -36,6 +36,7 @@ const SignIn = () => {
           <div className='w-3/4 flex shadow-2xl '>
             <div className="bg-white w-2/4 p-6 rounded-lg">
               <h1 className="text-center text-3xl md:text-5xl font-bold text-secondary mb-6"><span className='text-primary'>Sign</span>In</h1>
+              {/* form */}
               <form className='w-2/4 mx-auto leading-6' onSubmit={handleSubmit(onsubmit)}>
                 <div className='mb-4'>
                   <label htmlFor="email">Email:</label>

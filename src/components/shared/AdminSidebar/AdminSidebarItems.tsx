@@ -18,27 +18,27 @@ export const AdminSidebarItems: TAdminSidebarItems = [
   },
 
   {
-    key: "Create-Bicycle",
+    key: "Create-product",
     icon: <Bike />,
-    title: "Create Bicycle",
-    link: "/create-bicycle",
+    title: "Create Product",
+    link: "create-product",
   },
   {
     key: "All-Product",
     icon: <Bike />,
     title: "All Product",
-    link: "/admin/products",
+    link: "allProducts",
   },
   {
     key: "All-Order",
     icon: <ListOrdered />,
     title: "All Order",
-    link: "/admin/orders",
+    link: "order-details",
   },
   {
     key: "Total-Revenue",
     icon: <ShieldCheck />,
     title: "Total Revenue",
-    link: "/admin/total-revenue",
+    link: "total-revenue",
   },
 ];

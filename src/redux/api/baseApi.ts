@@ -1,9 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import {
-  BaseQueryApi,
+  // BaseQueryApi,
   BaseQueryFn,
   createApi,
-  DefinitionType,
+  // DefinitionType,
   FetchArgs,
   fetchBaseQuery,
 } from "@reduxjs/toolkit/query/react";
@@ -24,9 +24,9 @@ const baseQuery = fetchBaseQuery({
 
 const baseQueryWithRefreshToken: BaseQueryFn<
   FetchArgs,
-  BaseQueryApi,
-  DefinitionType
-> = async (args, api, extraOption): Promise<any> => {
+  unknown,
+  unknown
+> = async (args, api, extraOption) => {
   let result = await baseQuery(args, api, extraOption);
 
   if (result?.error?.status === 404) {

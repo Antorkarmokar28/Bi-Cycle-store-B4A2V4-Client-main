@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { FaBicycle } from "react-icons/fa6";
-import { NavLink } from "react-router";
+import { NavLink, Outlet } from "react-router";
 import { useAppSelector } from "@/redux/hooks";
 import { useCurrentUser } from "@/redux/features/auth/authSlice";
 import { CustomerSidebarItems } from "./CustomerSidebarItems";
@@ -94,10 +94,7 @@ const AdminSidebar = () => {
       </div>
 
       {/* Page Content */}
-      <div className="flex-1 p-8">
-        <h1 className="text-3xl font-bold">Welcome to Rideology!</h1>
-        <p className="mt-4 text-gray-600">Your one-stop bicycle shop.</p>
-      </div>
+      <Outlet />
     </div>
   );
 };

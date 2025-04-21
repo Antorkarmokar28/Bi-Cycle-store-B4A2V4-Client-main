@@ -78,7 +78,7 @@ const Navbar = () => {
               <DropdownMenuContent>
                 <DropdownMenuItem className="mt-6 bg-white p-6 border-2 border-primary rounded-lg">
                   <p className="text-center mb-a text-primary mb-4 font-bold font-inter">{user.name}</p>
-                  <Link className="block mb-4 text-center hover:text-primary duration-200 font-inter" to="/admin-dashboard">View Profile</Link>
+                  <Link className="block mb-4 text-center hover:text-primary duration-200 font-inter" to="/admin-dashboard">Dashboard</Link>
                   <button onClick={handleSignOut} className="hover:bg-primary cursor-pointer hover:text-white px-3 py-2 rounded-md border-2 border-primary text-primary duration-200 ease-in md:flex items-center gap-1 md:gap-2 font-semibold hidden">
                     Sign Out
                     <PiSignInFill className="font-semibold md:text-2xl" />

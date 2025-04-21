@@ -1,6 +1,5 @@
 import AdminSidebar from "@/components/shared/AdminSidebar/AdminSidebar";
 
-
 const AdminDashboard = () => {
   return (
     <main>

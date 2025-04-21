@@ -7,12 +7,12 @@ export const MenuItems = [
   {
     id: 2,
     title: "Product",
-    link: "/product",
+    link: "/allProducts",
   },
   {
     id: 3,
     title: "Product Details",
-    link: "#",
+    link: "allProducts/productDetails/:productId",
   },
   {
     id: 4,

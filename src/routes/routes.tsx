@@ -8,12 +8,14 @@ import Order from "@/pages/Order";
 import ProtectedRoute from "@/components/layouts/ProtectedRoute";
 import AdminDashboard from "@/pages/AdminDashboard/AdminDashboard";
 import CustomerDashboard from "@/pages/CustomerDashboard/CustomerDashboard";
-import CreateBicycle from "@/pages/AdminDashboard/ProductManagement/CreateBicycle";
 import Checkout from "@/pages/Checkout/Checkout";
 import PaymentSuccess from "@/pages/Checkout/PaymentSuccess";
 import PaymentFailed from "@/pages/Checkout/PaymentFailed";
 import ProductDetails from "@/redux/features/product/ProductDetails";
-import AllProduct from "@/pages/AdminDashboard/Product/AllProduct";
+import AllProduct from "@/pages/Product/AllProduct";
+import OrderDetails from "@/pages/AdminDashboard/OrderManagement/OrderDetails";
+import TotalRevenue from "@/pages/AdminDashboard/TotalRevenue/TotalRevenue";
+import CreateProduct from "@/pages/AdminDashboard/ProductManagement/CreateProduct";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -82,22 +84,44 @@ const router = createBrowserRouter([
     ),
     children: [
       {
-        path: "create-bicycle",
+        path: "create-product",
         element: (
           <ProtectedRoute>
-            <CreateBicycle />
+            <CreateProduct />
           </ProtectedRoute>
         ),
       },
       {
-        path: "order",
-        element: <Order />,
+        path: "allproducts",
+        element: <ProtectedRoute>
+          <AllProduct />
+        </ProtectedRoute>
+      },
+      {
+        path: "order-details",
+        element: (
+          <ProtectedRoute>
+            <OrderDetails />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "total-revenue",
+        element: (
+          <ProtectedRoute>
+            <TotalRevenue />
+          </ProtectedRoute>
+        ),
       },
     ],
   },
   {
     path: "/customer-dashboard",
-    element: <CustomerDashboard />,
+    element: (
+      <ProtectedRoute>
+        <CustomerDashboard />
+      </ProtectedRoute>
+    ),
   },
 ]);
 

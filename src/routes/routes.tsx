@@ -11,11 +11,12 @@ import CustomerDashboard from "@/pages/CustomerDashboard/CustomerDashboard";
 import Checkout from "@/pages/Checkout/Checkout";
 import PaymentSuccess from "@/pages/Checkout/PaymentSuccess";
 import PaymentFailed from "@/pages/Checkout/PaymentFailed";
-import ProductDetails from "@/redux/features/product/ProductDetails";
-import AllProduct from "@/pages/Product/AllProduct";
 import OrderDetails from "@/pages/AdminDashboard/OrderManagement/OrderDetails";
 import TotalRevenue from "@/pages/AdminDashboard/TotalRevenue/TotalRevenue";
 import CreateProduct from "@/pages/AdminDashboard/ProductManagement/CreateProduct";
+import ProductTable from "@/pages/AdminDashboard/ProductManagement/ProductTable";
+import AllProducts from "@/pages/AllProducts";
+import ProductDetails from "@/pages/ProductDetails";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -35,11 +36,11 @@ const router = createBrowserRouter([
       },
       {
         path: "allProducts",
-        element: <AllProduct />,
+        element: <AllProducts />,
       },
       {
-        path: "allProducts/productDetails/:productId", // Dynamic route with productId
-        element: <ProductDetails />,
+        path: "allProducts/productDetails/:productId",
+        element: <ProductDetails />
       },
       {
         path: "checkOut",
@@ -94,7 +95,7 @@ const router = createBrowserRouter([
       {
         path: "allproducts",
         element: <ProtectedRoute>
-          <AllProduct />
+          <ProductTable />
         </ProtectedRoute>
       },
       {

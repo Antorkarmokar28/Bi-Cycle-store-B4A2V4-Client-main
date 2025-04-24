@@ -1,27 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { useCreateProductMutation } from "@/redux/features/admin/productsmanagement";
+import { ApiError, ProductFormData } from "@/types/createProduct";
 import { Loader } from "lucide-react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "sonner";
 
-interface ApiError {
-  data?: {
-    message?: string;
-  };
-  message?: string;
-}
-
-interface ProductFormData {
-  name: string;
-  brand: string;
-  price: string;
-  quantity: string;
-  category: string;
-  model?: string;
-  description?: string;
-  inStock: "true" | "false";
-  image: FileList;
-}
 
 const CreateProduct = () => {
   const [createProduct, { isLoading }] = useCreateProductMutation();
@@ -171,7 +154,9 @@ const CreateProduct = () => {
             className="block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm"
           />
           {errors.quantity && (
-            <p className="mt-1 text-sm text-red-600">{errors.quantity.message}</p>
+            <p className="mt-1 text-sm text-red-600">
+              {errors.quantity.message}
+            </p>
           )}
         </div>
 
@@ -192,13 +177,17 @@ const CreateProduct = () => {
             <option value="BMX">BMX</option>
           </select>
           {errors.category && (
-            <p className="mt-1 text-sm text-red-600">{errors.category.message}</p>
+            <p className="mt-1 text-sm text-red-600">
+              {errors.category.message}
+            </p>
           )}
         </div>
 
         {/* Model */}
         <div>
-          <label className="block mb-2 font-medium">Model</label>
+          <label className="block mb-2 font-medium">
+            Model <span className="text-red-500">*</span>
+          </label>
           <input
             type="text"
             {...register("model")}
@@ -229,7 +218,9 @@ const CreateProduct = () => {
             <option value="false">Out of Stock</option>
           </select>
           {errors.inStock && (
-            <p className="mt-1 text-sm text-red-600">{errors.inStock.message}</p>
+            <p className="mt-1 text-sm text-red-600">
+              {errors.inStock.message}
+            </p>
           )}
         </div>
 

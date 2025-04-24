@@ -6,21 +6,16 @@ export const MenuItems = [
   },
   {
     id: 2,
-    title: "Product",
+    title: "All Product",
     link: "/allProducts",
   },
   {
     id: 3,
-    title: "Product Details",
-    link: "allProducts/productDetails/:productId",
-  },
-  {
-    id: 4,
     title: "About Us",
     link: "/about",
   },
   {
-    id: 5,
+    id: 4,
     title: "Checkout",
     link: "/checkout",
   },

@@ -3,14 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MenuItems } from "./MenuItems";
 import { Link } from "react-router";
 import { PiSignInFill } from "react-icons/pi";
-import { logout, useCurrentUser } from "@/redux/features/auth/authSlice";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 const ResponsiveMenu = ({ openMenu }: any) => {
-  const user = useAppSelector(useCurrentUser)
-  const disPatch = useAppDispatch();
-  const handleSignOut = () => {
-    disPatch(logout());
-  }
+
   return (
     <AnimatePresence mode="wait">
       {openMenu && (

@@ -11,6 +11,7 @@ const productApi = baseApi.injectEndpoints({
 
       }),
     }),
+    // get all products
     getProduct: builder.query({
       query: () => ({
         url: "/bicycles",

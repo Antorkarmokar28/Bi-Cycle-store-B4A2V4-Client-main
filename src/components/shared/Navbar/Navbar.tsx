@@ -9,7 +9,11 @@ import ResponsiveMenu from "./ResponsiveMenu";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { logout, useCurrentUser } from "@/redux/features/auth/authSlice";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
+import { selectCart } from "@/redux/features/cart/cartSlice";
+import { useSelector } from "react-redux";
 const Navbar = () => {
+  const cart = useSelector(selectCart); // Fetch cart data from Redux store
+  const cartItemCount = cart.length;
   const user = useAppSelector(useCurrentUser);
   const disPatch = useAppDispatch();
   const handleSignOut = () => {
@@ -65,10 +69,11 @@ const Navbar = () => {
           {/* Icons inner */}
           <div className="flex gap-4 md:gap-4 items-center">
             <Link
-              to="/order"
-              className="text-2xl bg-primary hover:text-white p-2 rounded-full duration-200 text-white"
+              to="/checkout"
+              className="text-2xl bg-primary hover:text-white p-2 rounded-full duration-200 text-white relative"
             >
               <CiShoppingCart className="font-bold" />
+              <div className="absolute -top-3 left-6 w-6 h-6 p4 rounded-full bg-gray-300  font-bold"><p className="text-red-500 text-sm text-center">{cartItemCount}</p></div>
             </Link>
             {
               user?<DropdownMenu>

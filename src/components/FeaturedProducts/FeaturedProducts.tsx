@@ -2,12 +2,20 @@ import { useGetProductQuery } from "@/redux/features/admin/productsmanagement";
 import { TProduct } from "@/types/global";
 import { Link, useNavigate } from "react-router";
 import { Button } from "../ui/button";
+import { useDispatch } from "react-redux";
+import { addToCart } from "@/redux/features/cart/cartSlice";
 
 const FeaturedProducts = () => {
+  const dispatch = useDispatch();
   const { data: productData } = useGetProductQuery(undefined);
   const navigate = useNavigate();
-  const handleProductClick = (productId: string) => {
+  // redirect product details page
+  const handleProductDetails = (productId: string) => {
     navigate(`/allProducts/productDetails/${productId}`);
+  };
+  // add to product in the cart 
+  const handleProductAddToCart = (productId: string) => {
+    dispatch(addToCart({ productId, quantity: 1 }));
   };
   return (
     <div className="container mx-auto bg-white mt-20 px-4 md:px-8 font-inter">
@@ -43,20 +51,24 @@ const FeaturedProducts = () => {
                       : "bg-red-100 text-red-700"
                   }`}
                 >
-                  {product.quantity > 0
-                    ? `In Stock (${product.quantity})`
-                    : "Out of Stock"}
+                  {product.quantity > 0 ? "In Stock" : "Out of Stock"}
                 </span>
               </div>
 
               <div className="flex items-center justify-between pt-4">
                 <button
-                  onClick={() => handleProductClick(product._id)}
-                  className="text-primary font-medium text-sm hover:underline"
+                  onClick={() => handleProductDetails(product._id)}
+                  className="text-primary font-medium text-sm hover:underline cursor-pointer"
                 >
                   See More Details
                 </button>
-                <Button className="text-white bg-primary hover:bg-primary/90 cursor-pointer">
+                <Button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleProductAddToCart(product._id);
+                  }}
+                  className="text-white bg-primary hover:bg-primary/90 cursor-pointer"
+                >
                   Add to Cart
                 </Button>
               </div>

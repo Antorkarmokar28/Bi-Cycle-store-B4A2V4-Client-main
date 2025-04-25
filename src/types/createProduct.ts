@@ -20,7 +20,7 @@ export interface ProductFormData {
 }
 
 // types/product.type.ts
-export type TMeta = {
+type TMeta = {
   page: number;
   limit: number;
   total: number;
@@ -28,12 +28,8 @@ export type TMeta = {
 };
 
 export type TProductsResponse = {
-  success: boolean;
-  message: string;
-  data: {
-    products: TProduct[];
-    meta: TMeta;
-  };
+  data: TProduct[];
+  meta: TMeta;
 };
 
 export type TSingleProductResponse = {

@@ -57,16 +57,13 @@ const Footer = () => {
                 <Link to="/">Home</Link>
               </li>
               <li className="hover:underline transition ease-in-out">
-                <Link to="/product">Product</Link>
-              </li>
-              <li className="hover:underline transition ease-in-out">
-                <Link to="/product-details">Product Details</Link>
+                <Link to="/product">All Product</Link>
               </li>
               <li className="hover:underline">
                 <Link to="/about">About Us</Link>
               </li>
               <li className="hover:underline transition ease-in-out">
-                <Link to="/orders">Orders</Link>
+                <Link to="/checkout">Checkout</Link>
               </li>
             </ul>
           </div>

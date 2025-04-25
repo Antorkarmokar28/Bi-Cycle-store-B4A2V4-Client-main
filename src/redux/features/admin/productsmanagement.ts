@@ -1,4 +1,6 @@
 import { baseApi } from "@/redux/api/baseApi";
+import { TProductsResponse } from "@/types/createProduct";
+import { TProduct } from "@/types/global";
 
 const productApi = baseApi.injectEndpoints({
   // create product
@@ -7,8 +9,7 @@ const productApi = baseApi.injectEndpoints({
       query: (formData) => ({
         url: "/bicycles/create-bicycle",
         method: "POST",
-        body: formData,  
-
+        body: formData,
       }),
     }),
     // get all products
@@ -18,7 +19,30 @@ const productApi = baseApi.injectEndpoints({
         method: "GET",
       }),
     }),
+    // update product
+    updateProduct: builder.mutation<
+      TProductsResponse,
+      { productId: string; data: Partial<TProduct> }
+    >({
+      query: ({ productId, data }) => ({
+        url: `/products/${productId}`,
+        method: "PATCH",
+        body: data,
+      }),
+    }),
+    // Delete a product by ID
+    deleteProduct: builder.mutation({
+      query: (productId) => ({
+        url: `/products/${productId}`,
+        method: "DELETE",
+      }),
+    }),
   }),
 });
 
-export const { useCreateProductMutation, useGetProductQuery } = productApi;
+export const {
+  useCreateProductMutation,
+  useGetProductQuery,
+  useUpdateProductMutation,
+  useDeleteProductMutation,
+} = productApi;

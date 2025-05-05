@@ -1,12 +1,13 @@
+
 const ImageGallery = () => {
   // image gallery array
   const images = [
-    "/src/assets/images/gallery/Bicycle-1.jpg",
-    "/src/assets/images/gallery/Bicycle-2.jpg",
-    "/src/assets/images/gallery/Bicycle-3.jpg",
-    "/src/assets/images/gallery/Bicycle-4.jpg",
-    "/src/assets/images/gallery/Bicycle-5.jpg",
-    "/src/assets/images/gallery/Bicycle-6.jpg",
+    "/assets/images/gallery/Bicycle-1.jpg",
+    "/assets/images/gallery/Bicycle-2.jpg",
+    "/assets/images/gallery/Bicycle-3.jpg",
+    "/assets/images/gallery/Bicycle-4.jpg",
+    "/assets/images/gallery/Bicycle-5.jpg",
+    "/assets/images/gallery/Bicycle-6.jpg",
   ];
 
   return (

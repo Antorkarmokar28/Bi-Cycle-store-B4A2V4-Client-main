@@ -1,3 +1,4 @@
+
 export const MenuItems = [
   {
     id: 1,
@@ -13,10 +14,5 @@ export const MenuItems = [
     id: 3,
     title: "About Us",
     link: "/about",
-  },
-  {
-    id: 4,
-    title: "Checkout",
-    link: "/checkout",
   },
 ];

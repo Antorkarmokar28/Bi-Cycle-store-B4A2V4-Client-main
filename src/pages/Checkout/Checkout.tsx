@@ -10,7 +10,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useGetAllProductsQuery } from "@/redux/features/product/productsApi";
-import { useAppSelector } from "@/redux/hooks";
 
 interface Order {
   userEmail: string;
@@ -25,14 +24,14 @@ const CheckoutPage = () => {
   const dispatch = useDispatch();
   const cart = useSelector(selectCart);
   const currentUser = useSelector(useCurrentUser);
-  const { data: productsData } = useGetAllProductsQuery(undefined);
+  const { data: productsData } = useGetAllProductsQuery({undefined});
   const [createOrder, { isLoading }] = useCreateOrderMutation();
 
   const [quantities, setQuantities] = useState<{ [key: string]: number }>({});
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [cartItemsWithDetails, setCartItemsWithDetails] = useState<any[]>([]);
-  const cartData = useAppSelector((state)=> state.cart)
+
   // Initialize quantities and match cart items with product details
   useEffect(() => {
     // Set initial quantities from cart
@@ -62,7 +61,7 @@ const CheckoutPage = () => {
   }, [cart, productsData]);
 
   const handleOrder = async()=>{
-    await createOrder(cartData);
+    
   }
 
 
@@ -230,9 +229,6 @@ const CheckoutPage = () => {
                 <div>
                   <Label htmlFor="address">Shipping Address</Label>
                   <Input
-                    id="address"
-                    as="textarea"
-                    rows={3}
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
                     placeholder="Enter your full address"

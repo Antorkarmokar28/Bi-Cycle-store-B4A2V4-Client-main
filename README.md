@@ -101,7 +101,7 @@ The goal of **Rideology** is to provide:
 
 ## ⚙️ Tech Stack
 
-- **Frontend**: React / Next.js 15, Tailwind CSS
+- **Frontend**: React Tailwind CSS
 - **State Management**: Redux Toolkit, RTK Query
 - **Backend**: Node.js, Express.js
 - **Database**: MongoDB with Mongoose
@@ -115,4 +115,4 @@ The goal of **Rideology** is to provide:
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/rideology.git
+git clone https://github.com/Antorkarmokar28/Bi-Cycle-store-B4A2V4-Client-main.git
